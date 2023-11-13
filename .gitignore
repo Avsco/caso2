@@ -1,0 +1,4 @@
+# generate a .gitignore file
+
+/venv
+__pycache__
