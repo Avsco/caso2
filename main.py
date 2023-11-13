@@ -30,32 +30,6 @@ tailwind = html.link(
 )
 
 @component
-def listItem():
-    lis = [item() for i in range(0, 20)]
-    return html.table(
-        { 
-            "style": {
-                "border": "1px solid black",
-                "border-collapse": "collapse",
-                "text-align": "center",
-                "width": "100%",
-            },
-            "class_name": "mx-2"
-        
-        },
-        html.thead(
-            html.tr(
-                html.th("Almuadilla"),
-                html.th("Flecha"),
-                html.th("Resultado"),
-            )
-        ),
-        html.tbody(
-            lis
-        )
-    )
-
-@component
 def item():
     r1 = random.random()
     f1 = formula(1, r1)
@@ -71,23 +45,126 @@ def item():
         html.td(r),
     )
 
+@component
+def listItem():
+    lis = [item() for i in range(0, 20)]
+    
+    return html.div(
+        html.table(
+            { 
+                "class_name": "w-full text-center border-collapse border-2 border-gray-500"
+            },
+            html.thead(
+                html.tr(
+                    html.th("Almuadilla"),
+                    html.th("Flecha"),
+                    html.th("Resultado"),
+                )
+            ),
+            html.tbody(lis)
+        ),
+        html.p(f"Total de interferencias: {lis.count('Hay interferencia')}")
+    )
+
+@component
+def variables():
+    return  html.section(
+        html.div(
+            html.p({ "class_name": "text-2xl font-bold" },"Variables parametrizables")
+        ),
+        html.div(
+            html.label(
+                {"class_name": "flex flex-col"},
+                "Distribucion",
+                html.select(
+                    {
+                        "class_name": "border border-gray-300 p-2 rounded-md",
+                        "value": "normal",
+                    },
+                    html.option({"value": "normal"}, "Normal"),
+                    html.option({"value": "uniform"}, "Uniforme"),
+                    html.option({"value": "exponential"}, "Exponencial"),
+                ),
+            ),
+        ),
+        html.div(
+            { "class_name": "flex items-center justify-between" },
+            html.div(
+                {
+                    "class_name": "flex items-center gap-4 my-6"
+                },
+                html.label(
+                    {"class_name": "flex flex-col"},
+                    "Media de almuadilla",
+                    html.input(
+                        {
+                            "type": "number",
+                            "label": "Hola",
+                            "value": AVERAGE_A,
+                            "step": 0.01
+                        }
+                    ),
+                ),
+                html.label(
+                    {"class_name": "flex flex-col"},
+                    "Varianza de almuadilla",
+                    html.input(
+                        {
+                            "type": "number",
+                            "label": "Hola",
+                            "value": VARIANCE_A,
+                            "step": 0.0001
+                        }
+                    ),
+                ),
+            ),
+            html.div(
+                {
+                    "class_name": "flex items-center gap-4 my-6"
+                },
+                html.label(
+                    {"class_name": "flex flex-col"},
+                    "Media de flecha",
+                    html.input(
+                        {
+                            "type": "number",
+                            "label": "Hola",
+                            "value": AVERAGE_F,
+                            "step": 0.01
+                        }
+                    ),
+                ),
+                html.label(
+                    {"class_name": "flex flex-col"},
+                    "Varianza de flecha",
+                    html.input(
+                        {
+                            "type": "number",
+                            "label": "Hola",
+                            "value": VARIANCE_F,
+                            "step": 0.0001
+                        }
+                    ),
+                ),
+            )
+        )
+    )
+
+@component
+def distributionElement():
+    return 
 
 @component
 def App():
     return html.main(
+        {
+            "class_name": "flex flex-col gap-8 container min-h-screen p-4 min-w-full"
+        },
         tailwind, 
-        html.h1("Caso 2"),
+        html.h1({ "class_name": "text-4xl font-extrabold" }, "Caso 2"),
         html.div(listItem()),
-        html.div(
-            html.input(
-                {
-                    "type": "number",
-                    "placeholder": "Almuadilla",
-                    "class_name": "mx-2",
-                    "label": "Hola"
-                }
-            )
-        )
+        html.div(variables()),
+        html.div(distributionElement())
     )
 
 configure(app, App)
