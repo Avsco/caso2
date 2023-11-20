@@ -17,7 +17,7 @@ tailwind = html.link(
 @component
 def root():
     return html.div(
-        {"class_name": "flex flex-col gap-8 container min-h-screen p-4 min-w-full"},
+        {"class_name": "flex flex-col gap-8 container min-h-screen p-0 min-w-full"},
         tailwind,
         app_element(),
     )

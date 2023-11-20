@@ -1,15 +1,15 @@
+import random
 import scipy.stats as stats
 
-from src.constants.variables import (
-    AVERAGE_A,
-    AVERAGE_F,
-    STANDARD_DEVIATION_A,
-    STANDARD_DEVIATION_F,
-)
 
+def formula(average: float, variance: float, distribution: str):
+    r = random.random()
 
-def formula(case, r):
-    if case == 1:
-        return AVERAGE_A + (STANDARD_DEVIATION_A * stats.norm.ppf(r))
-    else:
-        return AVERAGE_F + (STANDARD_DEVIATION_F * stats.norm.ppf(r))
+    if distribution == "uniform":
+        return average + (variance * stats.uniform.ppf(r))
+    elif distribution == "exponential":
+        return average - (variance * stats.expon.ppf(r))
+    elif distribution == "normal":
+        return average + (variance**0.5 * stats.norm.ppf(r))
+
+    return average + (variance**0.5 * stats.norm.ppf(r))

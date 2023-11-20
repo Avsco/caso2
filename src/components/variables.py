@@ -1,15 +1,14 @@
 from reactpy import component, html
 
-from src.constants.variables import (
-    AVERAGE_A,
-    AVERAGE_F,
-    VARIANCE_A,
-    VARIANCE_F,
-)
-
 
 @component
-def variables():
+def variables(options: dict = {}, change_options=lambda x: x):
+    def change_data(name: str, value: float):
+        temp_options = options.copy()
+
+        temp_options[name] = value
+        change_options(options=temp_options)
+
     return html.section(
         html.div(
             html.p({"class_name": "text-2xl font-bold"}, "Variables parametrizables")
@@ -22,6 +21,10 @@ def variables():
                     {
                         "class_name": "border border-gray-300 p-2 rounded-md",
                         "value": "normal",
+                        "name": "distribution",
+                        "on_change": lambda x: change_data(
+                            name="distribution", value=x["target"]["value"]
+                        ),
                     },
                     html.option({"value": "normal"}, "Normal"),
                     html.option({"value": "uniform"}, "Uniforme"),
@@ -35,25 +38,31 @@ def variables():
                 {"class_name": "flex items-center gap-4 my-6"},
                 html.label(
                     {"class_name": "flex flex-col"},
-                    "Media de almuadilla",
+                    "Media de cojinete",
                     html.input(
                         {
                             "type": "number",
-                            "label": "Hola",
-                            "value": AVERAGE_A,
+                            "value": options["average_a"],
                             "step": 0.01,
+                            "name": "average_a",
+                            "on_change": lambda x: change_data(
+                                name="average_a", value=float(x["target"]["value"])
+                            ),
                         }
                     ),
                 ),
                 html.label(
                     {"class_name": "flex flex-col"},
-                    "Varianza de almuadilla",
+                    "Varianza de cojinete",
                     html.input(
                         {
                             "type": "number",
-                            "label": "Hola",
-                            "value": VARIANCE_A,
+                            "value": options["variance_a"],
                             "step": 0.0001,
+                            "name": "variance_a",
+                            "on_change": lambda x: change_data(
+                                name="variance_a", value=float(x["target"]["value"])
+                            ),
                         }
                     ),
                 ),
@@ -66,9 +75,12 @@ def variables():
                     html.input(
                         {
                             "type": "number",
-                            "label": "Hola",
-                            "value": AVERAGE_F,
+                            "value": options["average_f"],
                             "step": 0.01,
+                            "name": "average_f",
+                            "on_change": lambda x: change_data(
+                                name="average_f", value=float(x["target"]["value"])
+                            ),
                         }
                     ),
                 ),
@@ -78,9 +90,12 @@ def variables():
                     html.input(
                         {
                             "type": "number",
-                            "label": "Hola",
-                            "value": VARIANCE_F,
+                            "value": options["variance_f"],
                             "step": 0.0001,
+                            "name": "variance_f",
+                            "on_change": lambda x: change_data(
+                                name="variance_f", value=float(x["target"]["value"])
+                            ),
                         }
                     ),
                 ),
