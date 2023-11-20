@@ -50,7 +50,7 @@ def item():
 
 
 @component
-def listItem():
+def list_item():
     lis = [item() for i in range(0, 20)]
 
     return html.div(
@@ -153,20 +153,20 @@ def variables():
 
 
 @component
-def distributionElement():
+def distribution_element():
     return
 
 
 @component
-def App():
+def app_element():
     return html.main(
         {"class_name": "flex flex-col gap-8 container min-h-screen p-4 min-w-full"},
         tailwind,
         html.h1({"class_name": "text-4xl font-extrabold"}, "Caso 2"),
-        html.div(listItem()),
+        html.div(list_item()),
         html.div(variables()),
-        html.div(distributionElement()),
+        html.div(distribution_element()),
     )
 
 
-configure(app, App)
+configure(app, app_element)
