@@ -1,9 +1,8 @@
 from reactpy import component, html, hooks
 
-import random
-
 from src.components.list_item import list_item
 from src.components.variables import variables
+from src.utils.generate_list import generate_list
 
 
 @component
@@ -11,7 +10,7 @@ def app_element():
     list, set_list = hooks.use_state([])
 
     hooks.use_effect(
-        lambda: set_list([[0.1, 0.2]]),
+        lambda: set_list(generate_list()),
         dependencies=[],
     )
 

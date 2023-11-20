@@ -5,6 +5,7 @@ from src.components.item import item
 @component
 def list_item(items: list = []):
     body_list = list(map(lambda x: item(x[0], x[1]), items))
+    interferences = list(filter(lambda x: x[0] > x[1], items))
 
     return html.div(
         html.table(
@@ -22,5 +23,5 @@ def list_item(items: list = []):
                 body_list,
             ),
         ),
-        html.p(f"Total de interferencias: {items.count('Hay interferencia')}"),
+        html.p(f"Total de interferencias: {len(interferences)}"),
     )
