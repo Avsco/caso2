@@ -1,5 +1,7 @@
 from reactpy import component, html
 
+from src.components.input_number import input_number
+
 
 @component
 def variables(options: dict = {}, change_options=lambda x: x):
@@ -10,12 +12,16 @@ def variables(options: dict = {}, change_options=lambda x: x):
         change_options(options=temp_options)
 
     return html.section(
+        {"style": "color: #122A4C"},
         html.div(
-            html.p({"class_name": "text-2xl font-bold"}, "Variables parametrizables")
+            html.p(
+                {"class_name": "text-md text-center mb-8"},
+                "Variables parametrizables",
+            )
         ),
         html.div(
             html.label(
-                {"class_name": "flex flex-col"},
+                {"class_name": "flex flex-col mb-4"},
                 "Distribucion",
                 html.select(
                     {
@@ -33,71 +39,41 @@ def variables(options: dict = {}, change_options=lambda x: x):
             ),
         ),
         html.div(
-            {"class_name": "flex items-center justify-between"},
+            {"class_name": "flex items-center gap-8 column-temp"},
             html.div(
-                {"class_name": "flex items-center gap-4 my-6"},
-                html.label(
-                    {"class_name": "flex flex-col"},
-                    "Media de cojinete",
-                    html.input(
-                        {
-                            "type": "number",
-                            "value": options["average_a"],
-                            "step": 0.01,
-                            "name": "average_a",
-                            "on_change": lambda x: change_data(
-                                name="average_a", value=float(x["target"]["value"])
-                            ),
-                        }
-                    ),
+                {"class_name": "flex flex-col items-center gap-4"},
+                html.span({"class_name": "w-full"}, "Flecha"),
+                input_number(
+                    label="Media",
+                    value=options["average_a"],
+                    step=0.01,
+                    name="average_a",
+                    on_change=lambda name, value: change_data(name=name, value=value),
                 ),
-                html.label(
-                    {"class_name": "flex flex-col"},
-                    "Varianza de cojinete",
-                    html.input(
-                        {
-                            "type": "number",
-                            "value": options["variance_a"],
-                            "step": 0.0001,
-                            "name": "variance_a",
-                            "on_change": lambda x: change_data(
-                                name="variance_a", value=float(x["target"]["value"])
-                            ),
-                        }
-                    ),
+                input_number(
+                    label="Varianza",
+                    value=options["variance_a"],
+                    step=0.0001,
+                    name="variance_a",
+                    on_change=lambda name, value: change_data(name=name, value=value),
                 ),
             ),
             html.div(
-                {"class_name": "flex items-center gap-4 my-6"},
-                html.label(
-                    {"class_name": "flex flex-col"},
-                    "Media de flecha",
-                    html.input(
-                        {
-                            "type": "number",
-                            "value": options["average_f"],
-                            "step": 0.01,
-                            "name": "average_f",
-                            "on_change": lambda x: change_data(
-                                name="average_f", value=float(x["target"]["value"])
-                            ),
-                        }
-                    ),
+                {"class_name": "flex flex-col items-center gap-4 w-full"},
+                html.span({"class_name": "w-full"}, "Cojinete"),
+                input_number(
+                    label="Media",
+                    value=options["average_f"],
+                    step=0.01,
+                    name="average_f",
+                    on_change=lambda name, value: change_data(name=name, value=value),
                 ),
-                html.label(
-                    {"class_name": "flex flex-col"},
-                    "Varianza de flecha",
-                    html.input(
-                        {
-                            "type": "number",
-                            "value": options["variance_f"],
-                            "step": 0.0001,
-                            "name": "variance_f",
-                            "on_change": lambda x: change_data(
-                                name="variance_f", value=float(x["target"]["value"])
-                            ),
-                        }
-                    ),
+                input_number(
+                    label="Varianza",
+                    value=options["variance_f"],
+                    step=0.0001,
+                    name="variance_f",
+                    on_change=lambda name, value: change_data(name=name, value=value),
                 ),
             ),
         ),

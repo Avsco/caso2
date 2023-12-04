@@ -1,7 +1,7 @@
 from src.utils.formulas import formula
 
 
-def generate_list(options: dict = {}):
+def generate_list(options: dict = {}, limit: int = 0):
     distribution, average_a, average_f, variance_a, variance_f = (
         options["distribution"],
         options["average_a"],
@@ -15,8 +15,11 @@ def generate_list(options: dict = {}):
     list_random = []
 
     # que el count tenga un nivel de seguridad de 95% respecto a la lista
-    while (len(list_random) == 0 or (count / len(list_random)) < 0.95) and (
-        len(list_random) < 1000
+
+    while (
+        ((count / len(list_random)) < 0.95)
+        if (limit == 0)
+        else (len(list_random) < limit)
     ):
         f1 = formula(average=average_a, variance=variance_a, distribution=distribution)
         f2 = formula(average=average_f, variance=variance_f, distribution=distribution)
