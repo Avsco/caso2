@@ -1,6 +1,7 @@
 from reactpy import component, html
 
 from src.components.item import item
+from src.components.chart import chart
 
 
 cell_styles = {
@@ -25,6 +26,7 @@ def list_item(
 
     return html.div(
         {"class_name": "w-full"},
+        chart(interferences=interferences, total=len(items)),
         html.div(
             {
                 "class_name": "table_x overflow-y-auto overflow-x-auto",
