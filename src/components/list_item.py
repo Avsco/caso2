@@ -13,7 +13,15 @@ cell_styles = {
 def list_item(
     items: list = [], interferences: int = 0, case_b: int = 0, alternative: bool = False
 ):
-    body_list = list(map(lambda x: item(x[0], x[1]), items))
+    body_list = (
+        list(map(lambda x: item(x[0], x[1]), items))
+        if len(items) > 0
+        else [
+            html.tr(
+                html.td({"colspan": 3, "class_name": "center-text h-12"}, "Sin datos")
+            )
+        ]
+    )
 
     return html.div(
         {"class_name": "w-full"},
@@ -63,7 +71,7 @@ def list_item(
             html.div(
                 {"class_name": "flex flex-col items-center justify-center"},
                 html.span(
-                    "62"
+                    case_b
                     if alternative
                     else "0%"
                     if (len(items) == 0)

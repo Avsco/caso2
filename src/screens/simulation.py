@@ -20,7 +20,6 @@ def simulation():
         {
             "list_random": [],
             "interferences": 0,
-            "case_b": 0,
             "number_of_simulations": 10,
             "options": {
                 "distribution": "normal",
@@ -38,7 +37,6 @@ def simulation():
                 "options": options,
                 "list_random": data["list_random"],
                 "interferences": data["interferences"],
-                "case_b": data["case_b"],
                 "number_of_simulations": data["number_of_simulations"],
             }
         )
@@ -49,13 +47,12 @@ def simulation():
                 "number_of_simulations": value,
                 "list_random": data["list_random"],
                 "interferences": data["interferences"],
-                "case_b": data["case_b"],
                 "options": data["options"],
             }
         )
 
-    def asd():
-        print("asd")
+    def printing_action():
+        print("printing...")
 
     def calculate_list():
         temp_data = generate_list(
@@ -66,15 +63,25 @@ def simulation():
                 "number_of_simulations": data["number_of_simulations"],
                 "list_random": temp_data["list_random"],
                 "interferences": temp_data["interferences"],
-                "case_b": temp_data["case_b"],
                 "options": data["options"],
             }
         )
 
-    hooks.use_effect(
-        calculate_list,
-        dependencies=[data["options"]],
-    )
+    def set_default():
+        set_data(
+            {
+                "list_random": [],
+                "interferences": 0,
+                "number_of_simulations": 10,
+                "options": {
+                    "distribution": "normal",
+                    "average_a": AVERAGE_A,
+                    "average_f": AVERAGE_F,
+                    "variance_a": VARIANCE_A,
+                    "variance_f": VARIANCE_F,
+                },
+            }
+        )
 
     return html.main(
         {"class_name": "flex grow gap-8 w-full"},
@@ -85,14 +92,11 @@ def simulation():
             list_item(
                 items=data["list_random"],
                 interferences=data["interferences"],
-                case_b=data["case_b"],
             ),
             html.div(
                 {"class_name": "flex justify-center gap-8 w-full"},
-                button(
-                    text="Volver a simular", on_click=calculate_list, name="simulate"
-                ),
-                button(text="Generar reporte", on_click=asd, name="report"),
+                button(text="Volver a simular", on_click=set_default, name="simulate"),
+                button(text="Generar reporte", on_click=printing_action, name="report"),
             ),
         ),
         html.div(
@@ -107,7 +111,7 @@ def simulation():
                 input_number(
                     value=data["number_of_simulations"],
                     step=1,
-                    name="variance_f",
+                    name="number_of_simulations",
                     on_change=lambda name, value: change_number_of_simulations(value),
                     minified=True,
                 ),
