@@ -43,57 +43,16 @@ generate_report = html.script(
     """
 )
 
-# inside => reactpy.backend._common.CommonOptions
-# html.script(
-#     {
-#         "type": "module",
-#          "src": "https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js",
-#         "crossorigin": "anonymous",
-#         "referrerpolicy": "no-referrer",
-#     }
-# ),
-# html.script(
-#     """
-#         let myChart
-#         let interferences
-#         let total
-
-#         setTimeout(() => {
-#             let canvas = document.querySelector('#myDoughnutChart');
-#             const vars = document.querySelector('#vars');
-
-#             var observer = new MutationObserver(function(mutations) {
-#                 mutations.forEach(function(mutation) {
-#                     if (mutation.type === "attributes") {
-
-#                         interferences = Number(vars.dataset.interferences);
-#                         total = Number(vars.dataset.total) - interferences;
-
-#                         const ctx = canvas.getContext('2d');
-
-#                         if (myChart) {
-#                             myChart.destroy();
-#                         }
-
-#                         myChart = new Chart(ctx, {
-#                             type: 'doughnut',
-#                             data: {
-#                                 labels: ['Interferencias', 'No interferencias'],
-#                                 datasets: [{
-#                                     data: [interferences, total],
-#                                     backgroundColor: ['#122A4C', '#B9B9B9'],
-#                                 }]
-#                             },
-#                             options: { }
-#                         });
-#                     }
-#                 });
-#             });
-
-#             observer.observe(vars, { attributes: true });
-#         }, 1000);
-#     """
-# )
+cdn_chart = (
+    html.script(
+        {
+            "type": "module",
+            "src": "https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js",
+            "crossorigin": "anonymous",
+            "referrerpolicy": "no-referrer",
+        }
+    ),
+)
 
 main_css = html.style(
     """
@@ -142,6 +101,7 @@ def root():
             g_static,
             font,
             generate_report,
+            cdn_chart,
             main_css,
         ),
         app_element(),
