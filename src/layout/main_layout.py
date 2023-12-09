@@ -7,6 +7,7 @@ def main_layout(children: list = {}):
         {"name": "Inicio", "href": "/"},
         {"name": "Simulación", "href": "/simulation"},
         {"name": "Calcular muestra", "href": "/calculate_sample"},
+        {"name": "Historial de simulaciones", "href": "/history"},
     ]
     item_links = list(
         map(
@@ -44,7 +45,10 @@ def main_layout(children: list = {}):
                         "background_color": "#122A4C",
                     },
                 },
-                html.ul({"class_name": "flex gap-4 h-full"}, item_links),
+                html.ul(
+                    {"class_name": "flex gap-4 h-full justify-center items-center"},
+                    item_links,
+                ),
             ),
         ),
         html.div(
