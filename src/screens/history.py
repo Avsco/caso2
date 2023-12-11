@@ -1,6 +1,81 @@
 from reactpy import component, html
+import json
+
+FILEPATH = "src/constants/data.json"
+
+
+# [
+#   {
+#     "distribution": "normal",
+#     "total_interferences": 0,
+#     "total_simulations": 0,
+#     "average_a": 0,
+#     "average_f": 0,
+#     "variance_a": 0,
+#     "variance_f": 0
+#   }
+# ]
+
+
+def get_json_data():
+    with open(FILEPATH) as json_file:
+        data = json.load(json_file)
+    return data
+
+
+def set_json_data(data):
+    with open(FILEPATH, "w") as outfile:
+        json.dump(data, outfile)
+
+
+def add_json_data(data):
+    with open(FILEPATH, "w") as outfile:
+        file_data = json.load(outfile)
+        print(file_data)
+        file_data.append(data)
+        json.dump(file_data, outfile)
+
+
+def item_history(item):
+    return html.li(
+        {"class_name": "list-group-item"},
+        html.div(
+            html.div(
+                {"class_name": "badge badge-primary badge-pill font-black"},
+                "Simulación",
+            ),
+            html.div(
+                {"class_name": "badge badge-primary badge-pill"},
+                f"Total simulaciones: {item['total_simulations']}",
+            ),
+            html.div(
+                {"class_name": "badge badge-primary badge-pill"},
+                f"Total interferencias: {item['total_interferences']}",
+            ),
+            html.div(
+                {"class_name": "badge badge-primary badge-pill"},
+                f"Flecha media: {item['average_a']}",
+            ),
+            html.div(
+                {"class_name": "badge badge-primary badge-pill"},
+                f"Cojinete media: {item['average_f']}",
+            ),
+            html.div(
+                {"class_name": "badge badge-primary badge-pill"},
+                f"Flecha varianza: {item['variance_a']}",
+            ),
+            html.div(
+                {"class_name": "badge badge-primary badge-pill"},
+                f"Cojinete varianza: {item['variance_f']}",
+            ),
+        ),
+    )
 
 
 @component
 def history():
-    return html.main()
+    list_history = get_json_data()
+
+    items = [item_history(item) for item in list_history]
+
+    return html.div(html.ol({"class_name": "list-group list-decimal p-4 pt-0"}, items))

@@ -5,6 +5,7 @@ from src.components.button import button
 from src.components.list_item import list_item
 from src.components.variables import variables
 from src.utils.generate_list import generate_list
+from src.screens.history import set_json_data, get_json_data
 
 from src.constants.variables import (
     AVERAGE_A,
@@ -67,6 +68,21 @@ def simulation():
             }
         )
 
+        list_data = get_json_data()
+        list_data.append(
+            {
+                "distribution": data["options"]["distribution"],
+                "total_interferences": temp_data["interferences"],
+                "total_simulations": len(temp_data["list_random"]),
+                "average_a": data["options"]["average_a"],
+                "average_f": data["options"]["average_f"],
+                "variance_a": data["options"]["variance_a"],
+                "variance_f": data["options"]["variance_f"],
+            }
+        )
+
+        set_json_data(list_data)
+
     def set_default():
         set_data(
             {
@@ -118,7 +134,7 @@ def simulation():
             ),
             html.div(
                 {"class_name": "m-auto"},
-                button(text="Simular", on_click=calculate_list, name="simulate2"),
+                button(text="Calcular", on_click=calculate_list, name="simulate2"),
             ),
         ),
     )

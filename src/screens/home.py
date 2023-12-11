@@ -1,5 +1,4 @@
 from reactpy import component, html
-from reactpy_router import link
 
 
 @component
@@ -16,21 +15,20 @@ def home():
                     {"class_name": "flex justify-center"},
                     html.img(
                         {
-                            "src": "https://lh3.googleusercontent.com/fife/AK0iWDwRivoMS_fvpF997Xt6gTtoXwvhpYADtMcl8XmyGHSiYOr_ztFgz8itKSkjhm31yl4_Y3EXV9-h45wVDnwDzNMrRKaQKK52Oz9y2EzO6E-1hs9j8c5qpt4Cj3bKxCM41ymHRH8S45YDVAiitSEUoXKW6Ok_hcUITDcufPAQVt84G77LP2ZFXphCSXmFsh4SyaMR5wESdBvstMePruM1qqGkmAHttc2jPB7L415uodOerGW6tDw30VBtPbncTV7GUNZ3C2nnkjGwZTzODoBAZ65jnGyUD_BoH8zUB2g6J4xWruSA_8ne7dcI2tMuqHuxhiEOjI9AseaUqW2yRrui9oiUHdGShKf8GLqXbdH2D0zbS8vgQyLlo893xC9pL4U6xJutix9TE65TNisRxAlx00BrTn7jPvF0wBHp1e3seHYg8gywlAYgLQ7UT596tZ0rdU-q-e2f0u6HjHk95XeeNzcMnT4yc_l-m9IVBdmlb4T67PHZu3EFDGWHh7Y-Ar3MTme2uWMJ7R1LEwCDgHyvbirCV_9RXB1St0ov3LWJ9tVMwYr8MNmhKjY0KN-OmrXCVvtVoLLRMkbi6qt9IkJ7o75pRr6arVyP1_IY1aLMFosDduR_rMQ-F1F23wD1_4-PxjmjyOe1rY814ejK6GWNn_WYC8nz0Be3o2pZh0kNs3TCgZiKztTLM0wNkvI8oaiUwmwGuRImoJpNFyIOkd__LVqxI_V1Km_Dp97135MM1VotyFOd2r1sXqYWEEsCLee_8ZA9y5guRZF4ElPzTfkl3wkQHdJ08WIMpaD_Wgud74pkz6i5lA5Ms-lk5vI2nkaqFV-17i6h8D4EsnY8mQx1MoB_EDIJmwVFB64A2PkbAHdzvKMa64qFRLN49WNOtIgw6zhoGIEFXSixAG6bxkEYyKZIjYPRmU_WrIgJTublB2oInYffbHg2OWZzfyh1MK_8BIpjSwIwId7KYP2vd11-6xYGRKMWOwcjvxfZ8RY_-2D72ow2IfUNs6TEjbX_PbDwJ_QQeYhccuV7sNur02PSS5TyB4fdvXfhJsYTV9ZqEoQy6L2Zd-5ck2w5JR4C15QOYNC2K7M4ggkqH4IAhYNs_AuWbqQFFUkVNmvHDaVaZ_OdsJX444Jpv5zWGc4bF9TBVpP2-MsLJjGYdVSpjK-YES0cwBfsncdP-5HNVG69JJSr_Az_UhUlKtarf04R0iI8y2k4sYMVYln2VjxMWa7sqJx2P42Y5iVhMDd6KNi8sG_L7KuGGPkNb_ooXdVAbEs-xj-UUvaTzI3FnOEsehFmlTjkLjNAQ4FGAjSCZWETSkh3Rh1ecfDGobrbqwrvist075Yck41P1fyrw-Kavu2sFKs97LncEzZAnh7MTw5LbkFmz6dF5D5wieuNBB5Di3CQjZgBExzh5YkviS-WiIsg9F2uBqy-KGZy5u0VPwoca2qsoZh_VIkAajV7qKnIyagezc0kkGBNhiyiZor0g2cMwvMCyuLsWXFsrwmll9wkbhYWMpTQmobXnwZwfQ=w958-h987",
+                            "src": "https://lh3.googleusercontent.com/fife/AK0iWDxoNGe8kdVvh7Fkw8lFT9UFYSWGiyqfEJqXRZkgaGxNCvAZZT34JHndvi3MY3H9d5RGIOv4634w4I0Bb-FsvSF2ndae6D6nEUUW7E2WYNFo1TuiIYQFtKH4H_ZUsCxLzonO1jzhkO_TMKqhcZTBtC9A_XhLyGSVEdtkEdgORMZzfDkXort3oflLLaefhOYhpkPCsPcUtaXx5yT5U7DOBdsA8B8bC5GNtemOeKvj4g8apUYm_kfsXE8m22_GnKvy-eoJzfpxGnyIn7lKI4im7RYDipmyWYuAX2ugJz08IMuXnYcbVq7Iy458QDtdrGFKxxMAuaz8ZNz8JdwUBlCNXsKuozf_VSnf4tHnddCaW3nlpLeRsRTnmON1R6JSLspEBaFhgq-0kPYwaPzE86BJCvVwJKOtQXlW7dcZ3e6QH1okYOQexiiX4V27rZFgsWiB_UH6-HlpZdu0ja1NGQZfDFozydLDyntV7dcFXF1NH-48IIZDhetzRZict_3uOGj-yijcgpJPrgThZM3E4lN9Ljfsp5areDp1wyl3N4UnrADU2YAnpwGTuljh5wYSx1xwC0u3U7WfC_2eBW7d4oWK2GEx3aH8OYZr9eKqGqBK3uQ5ci03c_PPP1MqqqwsKh5Sv4U_V2UN6pRVIhkXgYroO0Dgalz1WWdsNZM30WVrY_XNSAbR_7qj3R15GLNXkOqgKOvf6SQYDEvUhSo7rH_JEbIz-0JOkiG6XHavjNPEPJm9DGbqO-NC69Lqb3yuTe3kzGsAvtKJS6rrn9ynwCt-JfBu_RdTVGZxAjHCkGl5iFdHlYrUGNlubIO_U1dBHxaDvrKgVmoGaCRJzOngs9DlotO78BKLy-tJ8aP0YHB4I0n3px0h1Ql3X-bbfSszvyRyhnrEPeYKoiyoOwD3ajUhEW8YXjO7nnqGCFHObpaqTfW4MizS6UlrRgRv_iR7jTa7pUqFbMcsDX-J5hE6F2HTnO0N7o4jtXrrvoUNzGNxnSNZMi5ya96LubCMvxxrBEitMBjUYYh2ljPAP83CMOOFzo1JW_yppL1pXgw5eWwyxqjcTZr4uABfV8RikpZ7_Myj68Tp7GVe_f_OsgbzXq4nk6Vf5XSB7B1_hb2eAut-0jWGB-8XPN9UY3cLwQBJ5R_qlVV9I7EmEh34MNPUbs8h7XsG25plH_FyBPI-HDI8IJtZ9PBOeumOW75khySeB5BT0mYTE9DoQdnsKuuaKTkjfncbaesGH1PAO93IobhY4FTgH1EPCr9MzSsEFjyi7q-tko-QLaj49BFB0Eb3iTwQODnCf1oUMmZLjD_9RvYbarv2COzVRenSn2cseQd8cHuTZV7ZBYn3eEpmJvuzdl2OB_e0iIIm8OdPAZBnO9CqbZLCp6Zo3bPEInSFZAwutmLcDNvzIzW9OJNxoB8U5yiONdeD7zHwG7rB0cfZpx9joFZU9DcLa65zut5z6qHVXKO-Pnyxf_xmPw0Rg0W7NCXMmfSBL5VZ0LhMdVeZkcryHfUXSmkJ8uj67T7FFDhzU6bW5o4=w1920-h1013",
                             "alt": "logo",
                             "width": "80%",
                         }
                     ),
                 ),
-                html.button(
-                    {
-                        "class_name": "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
-                        "onclick": "window.location.href='/calculate_sample'",
-                        "style": {"background-color": "#122A4C"},
-                    },
-                    link(
+                html.a(
+                    {"href": "/simulation"},
+                    html.button(
+                        {
+                            "class_name": "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
+                            "style": {"background-color": "#122A4C"},
+                        },
                         "Iniciar simulación",
-                        to="/simulation",
                     ),
                 ),
             ),
