@@ -28,7 +28,7 @@ def home():
                             "class_name": "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
                             "style": {"background-color": "#122A4C"},
                         },
-                        "Cualcular",
+                        "Iniciar simulacion",
                     ),
                 ),
             ),
@@ -73,7 +73,7 @@ def home():
                             html.li(
                                 "En la página de inicio de la simulación, ingrese los parámetros de la simulación. "
                             ),
-                            html.li("Haga clic en el botón 'Calcular'."),
+                            html.li("Haga clic en el botón 'Simular'."),
                         ),
                     ),
                 ),
