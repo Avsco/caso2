@@ -167,7 +167,7 @@ def calculate_sample():
             ),
             html.div(
                 {"class_name": "m-auto"},
-                button(text="Calcular", on_click=calculate_list, name="simulate2"),
+                button(text="Simular", on_click=calculate_list, name="simulate2"),
             ),
         ),
     )
