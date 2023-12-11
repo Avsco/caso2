@@ -15,11 +15,11 @@ def list_item(
     items: list = [], interferences: int = 0, case_b: int = 0, alternative: bool = False
 ):
     body_list = (
-        list(map(lambda x: item(x[0], x[1]), items))
+        list(map(lambda x: item(x[0], x[1], x[2], x[3]), items))
         if len(items) > 0
         else [
             html.tr(
-                html.td({"colspan": 3, "class_name": "center-text h-12"}, "Sin datos")
+                html.td({"colspan": 5, "class_name": "center-text h-12"}, "Sin datos")
             )
         ]
     )
@@ -43,15 +43,23 @@ def list_item(
                     html.tr(
                         html.th(
                             cell_styles,
-                            "Cojinete",
+                            "Medida del Cojinete",
                         ),
                         html.th(
                             cell_styles,
-                            "Flecha",
+                            "Varianza del Cojinete",
                         ),
                         html.th(
                             cell_styles,
-                            "Resultado",
+                            "Media del Flecha",
+                        ),
+                        html.th(
+                            cell_styles,
+                            "Varianza del Resultado",
+                        ),
+                        html.th(
+                            cell_styles,
+                            "Interferencia",
                         ),
                     ),
                 ),

@@ -42,7 +42,7 @@ def variables(options: dict = {}, change_options=lambda x: x):
             {"class_name": "flex items-center gap-8 column-temp"},
             html.div(
                 {"class_name": "flex flex-col items-center gap-4"},
-                html.span({"class_name": "w-full"}, "Flecha"),
+                html.span({"class_name": "w-full"}, "Cojinete"),
                 input_number(
                     label="Media",
                     value=options["average_a"],
@@ -60,7 +60,7 @@ def variables(options: dict = {}, change_options=lambda x: x):
             ),
             html.div(
                 {"class_name": "flex flex-col items-center gap-4 w-full"},
-                html.span({"class_name": "w-full"}, "Cojinete"),
+                html.span({"class_name": "w-full"}, "Flecha"),
                 input_number(
                     label="Media",
                     value=options["average_f"],

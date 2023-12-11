@@ -133,7 +133,18 @@ def simulation():
                 ),
             ),
             html.div(
-                {"class_name": "m-auto"},
+            html.p(
+                {"class_name": "text-md text-center mb-4 mt-4",'style':{"color": "#122A4C"} },
+                "Conclusiones",
+            )
+        )   ,
+            html.div() if(len(data["list_random"]) == 0) else
+            html.div(
+                {'style':{"color": "#122A4C"}},
+                f"La simulación tiene una probabilidad mayor a 85% de interferencias, se recomienda reducir la varianza y/o medida la flecha o incrementar la varianza y/o medida del cojinete" if (data["interferences"] > 0 and len(data["list_random"]) / data["interferences"] > 0.85) else f"La simulación tiene una probabilidad mayor a 40% y menor al 85% de interferencias, se recomienda reducir la varianza y/o medida la flecha o incrementar la varianza y/o medida del cojinete" if (data["interferences"] > 0 and len(data["list_random"])/ data["interferences"] > 0.20) else f"La simulación tiene una probabilidad menor al 20%, se tiene una buena media y varianza entre la flecha y la media"
+            ),
+            html.div(
+                {"class_name": "m-auto",'style':{"color": "#122A4C"}},
                 button(text="Simular", on_click=calculate_list, name="simulate2"),
             ),
         ),

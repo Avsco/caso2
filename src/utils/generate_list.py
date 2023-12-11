@@ -18,9 +18,9 @@ def generate_list(options: dict = {}, limit: int = 0):
         f1 = formula(average=average_a, variance=variance_a, distribution=distribution)
         f2 = formula(average=average_f, variance=variance_f, distribution=distribution)
 
-        list_random.append([f1, f2])
+        list_random.append([f1, f2, average_a, average_f])
 
-        if f1 > f2:
+        if f1 < f2:
             interferences += 1
             if (f1 - f2) > 0.1:
                 count += 1
@@ -56,9 +56,9 @@ def generate_list_b(
         f1 = formula(average=average_a, variance=variance_a, distribution=distribution)
         f2 = formula(average=average_f, variance=variance_f, distribution=distribution)
 
-        list_random.append([f1, f2])
+        list_random.append([f1, f2, average_a, average_f])
 
-        if f1 > f2:
+        if f1 < f2:
             interferences += 1
             if (f1 - f2) > security_level:
                 case_b += 1
