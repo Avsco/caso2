@@ -4,19 +4,6 @@ import json
 FILEPATH = "src/constants/data.json"
 
 
-# [
-#   {
-#     "distribution": "normal",
-#     "total_interferences": 0,
-#     "total_simulations": 0,
-#     "average_a": 0,
-#     "average_f": 0,
-#     "variance_a": 0,
-#     "variance_f": 0
-#   }
-# ]
-
-
 def get_json_data():
     with open(FILEPATH) as json_file:
         data = json.load(json_file)
@@ -26,14 +13,6 @@ def get_json_data():
 def set_json_data(data):
     with open(FILEPATH, "w") as outfile:
         json.dump(data, outfile)
-
-
-def add_json_data(data):
-    with open(FILEPATH, "w") as outfile:
-        file_data = json.load(outfile)
-        print(file_data)
-        file_data.append(data)
-        json.dump(file_data, outfile)
 
 
 def item_history(item):
