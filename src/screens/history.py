@@ -70,5 +70,6 @@ def history():
     list_history = get_json_data()
 
     items = [item_history(item) for item in list_history]
+    items.reverse()
 
     return html.div(html.ol({"class_name": "list-group list-decimal p-4 pt-0"}, items))
