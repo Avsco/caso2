@@ -4,9 +4,9 @@ from src.components.item import item
 from src.components.chart import chart
 
 
-cell_styles = {
-    "class_name": "border border-slate-600",
-    "style": {"min-width": "33%"},
+header_cell_styles = {
+    "class_name": "border border-slate-600 text-sm",
+    "style": {"width": "10px"},
 }
 
 
@@ -25,7 +25,9 @@ def list_item(
     )
 
     return html.div(
-        {"class_name": "w-full"},
+        {
+            "class_name": "w-full",
+        },
         chart(interferences=interferences, total=len(items)),
         html.div(
             {
@@ -42,23 +44,23 @@ def list_item(
                     },
                     html.tr(
                         html.th(
-                            cell_styles,
+                            header_cell_styles,
                             "Medida del Cojinete",
                         ),
                         html.th(
-                            cell_styles,
+                            header_cell_styles,
                             "Varianza del Cojinete",
                         ),
                         html.th(
-                            cell_styles,
+                            header_cell_styles,
                             "Media del Flecha",
                         ),
                         html.th(
-                            cell_styles,
+                            header_cell_styles,
                             "Varianza del Resultado",
                         ),
                         html.th(
-                            cell_styles,
+                            header_cell_styles,
                             "Interferencia",
                         ),
                     ),

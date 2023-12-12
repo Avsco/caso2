@@ -100,10 +100,10 @@ def simulation():
         )
 
     return html.main(
-        {"class_name": "flex grow gap-8 w-full"},
+        {"class_name": "flex gap-8 w-full"},
         html.div(
             {
-                "class_name": "flex flex-col justify-between items-center w-full p-24 px-4 pb-0 gap-8",
+                "class_name": "flex grow flex-col justify-between items-center w-full p-24 px-4 pb-0 gap-8",
             },
             list_item(
                 items=data["list_random"],
@@ -116,7 +116,9 @@ def simulation():
             ),
         ),
         html.div(
-            {"class_name": "flex grow flex-col gap-4 p-24 px-4 w-full"},
+            {
+                "class_name": "flex grow flex-col gap-4 p-24 px-4 w-full max-w-2xl m-auto"
+            },
             html.div(variables(change_options=change_options, options=data["options"])),
             html.div(
                 {"class_name": "flex w-full"},
